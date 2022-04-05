@@ -33,12 +33,20 @@ void heightConversion (float feet, float inches)
 
 }
 
+void britishCurrency (float pound, float shillings, float pence)
+{
+    float pence2Pound= pence/240;
+    float shillings2Pound= shillings/20;
+    float total= pound+shillings+pence;
+
+    cout<< "La cantidad de dinero en el sistema actual es: " << total << "gbp" << endl;
+}
 int main()
 {
     atwood(16, 18);
     conversion(22, 350);
     heightConversion(6, 1);
-    
+    britishCurrency(20,10,6);
     return 0;
 }
 
