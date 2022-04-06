@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -37,18 +38,44 @@ void britishCurrency (float pound, float shillings, float pence)
 {
     float pence2Pound= pence/240;
     float shillings2Pound= shillings/20;
-    float total= pound+shillings+pence;
+    float total= pound+shillings2Pound+pence2Pound;
 
     cout<< "La cantidad de dinero en el sistema actual es: " << total << "gbp" << endl;
 }
+
+/**
+ * @brief Generates a random value between 0 and 1 (inclusive)
+ * @return float random floating point value.
+ */
+float myRrandom(){
+  srand(time(0));
+  return static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+}
+
+void randNum (int n, int m)
+{
+    float randFloat= myRrandom();
+    srand(time(0));
+    int intRand= rand() % ((m-n)+1)+n;
+    float finalRand= intRand+randFloat;
+    if(intRand==m)
+    {
+        finalRand= m;
+    }
+    cout << "El numero aleatorio es: " << finalRand << endl;
+
+}
+
 int main()
 {
     atwood(16, 18);
     conversion(22, 350);
     heightConversion(6, 1);
     britishCurrency(20,10,6);
+    randNum(1,6);
     return 0;
 }
+
 
 
 
