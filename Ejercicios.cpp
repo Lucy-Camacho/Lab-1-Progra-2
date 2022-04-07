@@ -66,6 +66,65 @@ void randNum (int n, int m)
 
 }
 
+bool primeTest (int num)
+{
+    bool prime= true;
+    for(int divisor=2; divisor<=num/2; divisor++)
+    {
+        if(num%divisor==0)
+        {
+            prime=false;
+            break;
+        }
+    }
+    return prime;
+}
+
+void primeNums (int num)
+{
+    int tablaPrimos[num][2];
+    bool primo= false;
+    int listaPrimos[num];
+    int numTest= 3;
+    
+    for(int i=0;i<num;i++)
+    {
+        for(int j=0; j<2; j++)
+        {
+            if(j==0)
+            {
+                tablaPrimos[i][j]=i+1;
+                cout << tablaPrimos[i][j] << " ";
+            }
+            else if(i==0)
+            {
+                tablaPrimos[i][j]= 2;
+                cout<< tablaPrimos[i][j] << endl;
+            }
+            else
+            {
+                bool isPrime= false;
+                while(isPrime==false)
+                {
+                    isPrime= primeTest(numTest);
+                    if(isPrime==false)
+                    {
+                        numTest++;
+                    }
+                    
+                }
+                tablaPrimos[i][j]=numTest;
+
+                cout << tablaPrimos[i][j] << endl;
+
+                numTest++;
+
+            }
+        }        
+    }
+    
+}
+
 int main()
 {
     atwood(16, 18);
@@ -73,6 +132,7 @@ int main()
     heightConversion(6, 1);
     britishCurrency(20,10,6);
     randNum(1,6);
+    primeNums(6);
     return 0;
 }
 
